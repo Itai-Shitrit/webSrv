@@ -10,5 +10,6 @@ router.delete('/:id',userController.delete); // מחיקה
 router.post('/',userController.add);  // הוספת חדש
 router.put('/:id',userController.update); // עדכון
 router.post('/login',userController.login); // התחברות
+router.get('/web/signin',userController.loginPage); // דף התחברות
 
 module.exports=router; // יצוא של הראוטר

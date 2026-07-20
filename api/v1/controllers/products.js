@@ -2,8 +2,9 @@ const productModel=require('../models/product');
 module.exports={
     getAll:async(req,res)=>{
         try{
-             const data=await productModel.find(); //
-             return res.status(200).json(data);
+             const data=await productModel.find().lean(); //
+             return res.render("products",{layouts:"main",data,length:data.length});
+             //return res.status(200).json(data);
         }
         catch(err){
              return res.status(500).json(err);
@@ -13,8 +14,14 @@ module.exports={
     getById:async(req,res)=>{
         const pid=req.params.id; // קבלת קוד המוצר שנשלח
             try{
-            const data=await productModel.find({pid:pid}); //
-            return res.status(200).json(data);
+            const data=await productModel.find({pid}).lean(); //
+            let prod={};
+            if(data.length>0)
+                prod=data[0];
+            
+            //return res.status(200).json(data);
+            return res.render("product",{layout:"main", prod})
+
         }
         catch(err){
              return res.status(500).json(err);

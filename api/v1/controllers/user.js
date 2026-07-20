@@ -44,7 +44,7 @@ module.exports={
         data.pass=await bcrypt.hash(data.pass,10);
     const updatedUser = await userModel.updateOne({uid:uid},data);
     return res.status(200).json(updatedUser);
-    },
+    }, 
 
     delete:async(req,res)=>{
     const uid=req.params.id; // קבלת קוד המוצר שנשלח
@@ -74,5 +74,10 @@ module.exports={
     }
     const token=jwt.sign({uid:user.uid,email:user.email},process.env.PRIVATE_KEY,{expiresIn:'1h'});
     return res.status(200).json({status:true,error:null,token});
+    },
+
+    loginPage:async(req,res) => {
+
+        res.render('login',{layout:'main'});
     }
 };

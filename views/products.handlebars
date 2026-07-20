@@ -1,0 +1,16 @@
+
+<div class="row gap-4">
+{{#each data}}
+
+                <div class="card" style="width: 18rem;">
+                    <img src="/images/Uploads/img/{{this.picname}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.pname}}</h5>
+                        <p class="card-text">אין תיאור</p>
+                        <a href="#" onclick="addToCart({{this.pid}},1)" class="btn btn-primary">הוסף לסל </a>
+                         <a href="/product/{{this.pid}}" class="btn btn-success">פרטים נוספים</a>
+                    </div>
+                </div>
+            
+{{/each}}
+</div>
