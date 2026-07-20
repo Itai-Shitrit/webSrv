@@ -53,10 +53,4 @@ app.use(express.static('public'));
 app.use('/product',routerProduct); // שילוב של הראוטר מוצרים 
 app.use('/user',routerUser); // שילוב של הראוטר מוצרים 
 
-const PORT = process.env.PORT || 5050;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-app.listen(PORT, '0.0.0.0', () => {});
-
 module.exports=app; // יצא של המודול שכתבנו
